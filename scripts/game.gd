@@ -15,8 +15,7 @@ var ai_bullets = 2
 var AIhp = 25
 
 func _ready() -> void:
-	print("I AM RUNNING ON: ", self)
-	
+	pass
 
 
 func _on_shoot_pressed() -> void:
@@ -26,10 +25,12 @@ func _on_shoot_pressed() -> void:
 		playershield = false
 		playerreload = false
 		bulletsplayer -= 1    # FIXED
+		
 		print(bulletsplayer)
 		ai_choose_action()
 		resolve_round()
 		start_cooldown()
+		update_bullet_labels()
 	else:
 		print("no bullets!")
 
@@ -52,6 +53,7 @@ func _on_reload_pressed() -> void:
 		ai_choose_action()
 		resolve_round()
 		start_cooldown()
+		update_bullet_labels()
 	else:
 		print("max bullets")
 	print(bulletsplayer)
@@ -89,6 +91,7 @@ func ai_shoot() -> void:
 	ai_shield = false
 	ai_reload = false
 	ai_bullets -= 1
+	update_bullet_labels()
 	print("AI bullets:", ai_bullets)
 
 func ai_shield_action() -> void:
@@ -104,6 +107,7 @@ func ai_reload_action() -> void:
 	ai_reload = true
 	if ai_bullets < 2:
 		ai_bullets += 1
+	update_bullet_labels()
 	print("AI bullets:", ai_bullets)
 func resolve_round():
 	# Player shoots AI
@@ -132,9 +136,31 @@ func resolve_round():
 	# Check for game over
 	if playerHP <= 0:
 		print("PLAYER LOSES!")
+		await get_tree().create_timer(0.3).timeout
+		$AnimatedSprite2D.play("dead")
+		await get_tree().create_timer(2.0).timeout
+		$AnimatedSprite2D.queue_free()
+		$PlayerHPA.queue_free()
 	if AIhp <= 0:
 		print("AI LOSES!")
+		await get_tree().create_timer(0.3).timeout
+		$AI/AnimatedSprite2D.play("dead")
+		await get_tree().create_timer(2.0).timeout
+		$AI/AnimatedSprite2D.queue_free()
+		$AIAHP.queue_free()
+	if AIhp and playerHP <= 0:
+		print("DRAW")
+		await get_tree().create_timer(0.3).timeout
+		$AI/AnimatedSprite2D.play("dead")
+		$AnimatedSprite2D.play("dead")
+		await get_tree().create_timer(2.0).timeout
+		$AIAHP.queue_free()
+		$PlayerHPA.queue_free()
+		
 func start_cooldown():
 	on_cooldown = true
 	await get_tree().create_timer(3.0).timeout
 	on_cooldown = false
+func update_bullet_labels():
+	$CanvasLayer/PlayerBulletLabel.text = str(bulletsplayer) + "/2"
+	$CanvasLayer/AIBulletLabel.text = str(ai_bullets) + "/2"

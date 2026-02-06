@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c82v17aei3n1t" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://rewpdlc0ty0m" path="res://Assets/Idle1.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b03mqcyudni2p" path="res://Assets/reload1.png" id="2_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://w5iffwltblqb" path="res://Assets/dead.png" id="2_rysoc"]
 [ext_resource type="Texture2D" uid="uid://cq6joxc4ho5v2" path="res://Assets/cowboy schoot.png" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://bweq325gupgpm" path="res://Assets/SHEILD.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bo4dab72bovdy" path="res://Assets/CowBoyIdle.png" id="5_u5sy4"]
@@ -16,6 +17,31 @@
 [ext_resource type="Texture2D" uid="uid://cqhxa3cxjphxm" path="res://Assets/pressedsheild.png" id="9_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://bjsco1117psym" path="res://Assets/ammo norma.png" id="10_264po"]
 [ext_resource type="Texture2D" uid="uid://biorravrxmkf5" path="res://Assets/pressedremold.png" id="11_1kice"]
+[ext_resource type="FontFile" uid="uid://bh6jvsa7eqolq" path="res://text/Jersey10-Regular.ttf" id="18_ssvqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdf8r"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8trd"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s33c4"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hv4c"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vniw0"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lddog"]
+atlas = ExtResource("2_rysoc")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
 atlas = ExtResource("1_lnu2h")
@@ -207,6 +233,29 @@ region = Rect2(816, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_458eo"]
 animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_gdf8r")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_x8trd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s33c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hv4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vniw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lddog")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p57ef")
@@ -561,6 +610,29 @@ region = Rect2(816, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gdf8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8trd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s33c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hv4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vniw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lddog")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_458eo")
 }, {
 "duration": 1.0,
@@ -728,10 +800,8 @@ script = ExtResource("1_lbhrr")
 position = Vector2(116, 315.00003)
 scale = Vector2(4.851816, 4.851816)
 sprite_frames = SubResource("SpriteFrames_458eo")
-animation = &"shield"
+animation = &"dead"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AnimatedSprite2D" unique_id=1893413791]
 
@@ -793,24 +863,50 @@ scale = Vector2(-0.96, 1)
 position = Vector2(-67.70833, 0)
 scale = Vector2(4.852, 4.852)
 sprite_frames = SubResource("SpriteFrames_2gnni")
-animation = &"reload2"
+animation = &"dead"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="PlayerHPA" type="ProgressBar" parent="." unique_id=690716639]
-offset_left = 45.0
-offset_top = 61.0
-offset_right = 292.4286
-offset_bottom = 121.72745
+modulate = Color(0, 1, 0, 0.6313726)
+offset_left = 8.0
+offset_top = 175.0
+offset_right = 228.0
+offset_bottom = 219.0
 max_value = 25.0
 value = 25.0
+show_percentage = false
 
-[node name="AIAHP" type="ProgressBar" parent="." unique_id=183801035]
-offset_left = 828.0
-offset_top = 61.0
-offset_right = 1026.7678
-offset_bottom = 114.89662
+[node name="AIAHP" type="ProgressBar" parent="." unique_id=1481472671]
+modulate = Color(0, 1, 0, 0.6313726)
+offset_left = 924.0
+offset_top = 175.0
+offset_right = 1144.0
+offset_bottom = 219.0
 max_value = 25.0
 value = 25.0
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=483955527]
+
+[node name="PlayerBulletLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1840748357]
+offset_left = 71.0
+offset_right = 160.0
+offset_bottom = 73.0
+scale = Vector2(1.775834, 1.775834)
+theme_override_fonts/normal_font = ExtResource("18_ssvqc")
+theme_override_font_sizes/normal_font_size = 55
+text = "2/2"
+
+[node name="AIBulletLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1897253803]
+offset_left = 921.0
+offset_right = 1010.0
+offset_bottom = 73.0
+scale = Vector2(1.775834, 1.775834)
+theme_override_fonts/normal_font = ExtResource("18_ssvqc")
+theme_override_font_sizes/normal_font_size = 55
+text = "2/2"
 
 [connection signal="mouse_entered" from="AnimatedSprite2D/CanvasLayer/SHOOT" to="AnimatedSprite2D/CanvasLayer/SHOOT" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AnimatedSprite2D/CanvasLayer/SHOOT" to="AnimatedSprite2D/CanvasLayer/SHOOT" method="_on_mouse_exited"]
