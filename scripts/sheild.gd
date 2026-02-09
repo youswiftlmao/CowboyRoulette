@@ -4,11 +4,11 @@ var exited := false
 
 func _on_mouse_entered() -> void:
 	exited = false
-	$AnimationPlayer.play("up down")
+	$AnimationPlayer.play("UPPIE")
 	await $AnimationPlayer.animation_finished
 
 	if exited:
-		$AnimationPlayer.play("down dwon")
+		$AnimationPlayer.play("down ")
 
 func _on_mouse_exited() -> void:
 	exited = true

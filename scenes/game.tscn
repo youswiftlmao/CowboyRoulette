@@ -17,7 +17,20 @@
 [ext_resource type="Texture2D" uid="uid://cqhxa3cxjphxm" path="res://Assets/pressedsheild.png" id="9_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://bjsco1117psym" path="res://Assets/ammo norma.png" id="10_264po"]
 [ext_resource type="Texture2D" uid="uid://biorravrxmkf5" path="res://Assets/pressedremold.png" id="11_1kice"]
+[ext_resource type="Script" uid="uid://b74sem64pgdbp" path="res://scripts/sheild.gd" id="12_5newe"]
+[ext_resource type="Script" uid="uid://dsuufkftbglaa" path="res://scripts/reload.gd" id="15_37s47"]
 [ext_resource type="FontFile" uid="uid://bh6jvsa7eqolq" path="res://text/Jersey10-Regular.ttf" id="18_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://hwvrvs874sun" path="res://Assets/bullet.png" id="19_1kice"]
+[ext_resource type="Texture2D" uid="uid://l4hmfntg1x1r" path="res://Assets/Sprite-0001.png" id="20_5newe"]
+[ext_resource type="Texture2D" uid="uid://ci27mshkd5g5h" path="res://Assets/MENU IF WIN ETC.png" id="23_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://cnakxdt6srwk4" path="res://Assets/skully.png" id="24_pl11u"]
+[ext_resource type="Texture2D" uid="uid://b3h28v0kghkvs" path="res://Assets/REPLAY WOOPOPAAA.png" id="25_suyxu"]
+[ext_resource type="Texture2D" uid="uid://bkw2k64wiev5p" path="res://Assets/replay pressed.png" id="26_sgl2t"]
+[ext_resource type="Script" uid="uid://dwigwgp3bu25b" path="res://scripts/RE.gd" id="27_qouja"]
+[ext_resource type="Texture2D" uid="uid://f6om57t2o43k" path="res://Assets/home.png" id="28_wljb1"]
+[ext_resource type="Texture2D" uid="uid://cc74aboxscl1r" path="res://Assets/presshome.png" id="29_v2yb1"]
+[ext_resource type="Script" uid="uid://dr1xl23ueq8yj" path="res://scripts/HOM.gd" id="30_sgl2t"]
+[ext_resource type="Texture2D" uid="uid://dq5ndn87wuuj0" path="res://Assets/TOFEYY.png" id="31_qouja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdf8r"]
 atlas = ExtResource("2_rysoc")
@@ -234,10 +247,10 @@ region = Rect2(816, 0, 48, 48)
 [sub_resource type="SpriteFrames" id="SpriteFrames_458eo"]
 animations = [{
 "frames": [{
-"duration": 3.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gdf8r")
 }, {
-"duration": 3.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x8trd")
 }, {
 "duration": 1.0,
@@ -417,6 +430,168 @@ animations = [{
 "name": &"shoot",
 "speed": 6.0
 }]
+
+[sub_resource type="Animation" id="Animation_1kice"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(280, 438.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_5newe"]
+resource_name = "down dwon"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.93303335, 2.0705297),
+"update": 0,
+"values": [Vector2(280, 399), Vector2(280, 438.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_37s47"]
+resource_name = "up down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.0705297, 0.93303335),
+"update": 0,
+"values": [Vector2(280, 438.99997), Vector2(280, 399)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bt5mj"]
+_data = {
+&"RESET": SubResource("Animation_1kice"),
+&"down dwon": SubResource("Animation_5newe"),
+&"up down": SubResource("Animation_37s47")
+}
+
+[sub_resource type="Animation" id="Animation_bt5mj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(495, 439.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_e1j6l"]
+resource_name = "UPPIE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(495, 439), Vector2(495, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_pl11u"]
+resource_name = "down "
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(495, 400), Vector2(495, 439)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhx41"]
+_data = {
+&"RESET": SubResource("Animation_bt5mj"),
+&"UPPIE": SubResource("Animation_e1j6l"),
+&"down ": SubResource("Animation_pl11u")
+}
+
+[sub_resource type="Animation" id="Animation_bhx41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(710, 440.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_qnb83"]
+resource_name = "UP"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(710, 440.99997), Vector2(710, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_sww3w"]
+resource_name = "don"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(710, 400), Vector2(710, 440.99997)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_suyxu"]
+_data = {
+&"RESET": SubResource("Animation_bhx41"),
+&"UP": SubResource("Animation_qnb83"),
+&"don": SubResource("Animation_sww3w")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_458eo"]
 atlas = ExtResource("5_u5sy4")
@@ -793,6 +968,180 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Animation" id="Animation_suyxu"]
+resource_name = "LEFLEF"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Skully2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.2670353755551326, -0.2670353755551326, 0.2670353755551326, 0.2670353755551326]
+}
+
+[sub_resource type="Animation" id="Animation_sgl2t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.26718956]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Skully2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.47911412]
+}
+
+[sub_resource type="Animation" id="Animation_qouja"]
+resource_name = "leftright"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.26718956, 0.26718956, -0.2670353755551326, -0.2670353755551326]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wljb1"]
+_data = {
+&"LEFLEF": SubResource("Animation_suyxu"),
+&"RESET": SubResource("Animation_sgl2t"),
+&"leftright": SubResource("Animation_qouja")
+}
+
+[sub_resource type="Animation" id="Animation_wljb1"]
+resource_name = "LOOSE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576.5, -749.99994), Vector2(576.5, -130)]
+}
+
+[sub_resource type="Animation" id="Animation_v2yb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576.5, -749.99994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_js0lu"]
+_data = {
+&"LOOSE": SubResource("Animation_wljb1"),
+&"RESET": SubResource("Animation_v2yb1")
+}
+
+[sub_resource type="Animation" id="Animation_js0lu"]
+resource_name = "AAAAAA"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576.5, -760.0002), Vector2(576.5, -130)]
+}
+
+[sub_resource type="Animation" id="Animation_gxtfn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576.5, -760.0002)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twgab"]
+_data = {
+&"AAAAAA": SubResource("Animation_js0lu"),
+&"RESET": SubResource("Animation_gxtfn")
+}
+
+[sub_resource type="Animation" id="Animation_02fa5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576.5, -753.0001)]
+}
+
+[sub_resource type="Animation" id="Animation_nepv3"]
+resource_name = "WIIINN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576.5, -753.0001), Vector2(576.5, -130)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7025r"]
+_data = {
+&"RESET": SubResource("Animation_02fa5"),
+&"WIIINN": SubResource("Animation_nepv3")
+}
+
 [node name="game" type="Node2D" unique_id=557867293]
 script = ExtResource("1_lbhrr")
 
@@ -822,6 +1171,9 @@ texture_normal = ExtResource("6_ir15t")
 texture_pressed = ExtResource("7_ca42v")
 script = ExtResource("8_ca42v")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/CanvasLayer/SHOOT" unique_id=835628936]
+libraries/ = SubResource("AnimationLibrary_bt5mj")
+
 [node name="SHEILD" type="TextureButton" parent="AnimatedSprite2D/CanvasLayer" unique_id=530134357]
 anchors_preset = 8
 anchor_left = 0.5
@@ -838,6 +1190,10 @@ scale = Vector2(6.012371, 6.012371)
 texture_normal = ExtResource("8_rysoc")
 texture_pressed = ExtResource("9_ssvqc")
 stretch_mode = 5
+script = ExtResource("12_5newe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/CanvasLayer/SHEILD" unique_id=2068444020]
+libraries/ = SubResource("AnimationLibrary_bhx41")
 
 [node name="RELOAD" type="TextureButton" parent="AnimatedSprite2D/CanvasLayer" unique_id=1919046570]
 anchors_preset = 8
@@ -854,6 +1210,10 @@ grow_vertical = 2
 scale = Vector2(6.0126595, 6.0126595)
 texture_normal = ExtResource("10_264po")
 texture_pressed = ExtResource("11_1kice")
+script = ExtResource("15_37s47")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/CanvasLayer/RELOAD" unique_id=801374971]
+libraries/ = SubResource("AnimationLibrary_suyxu")
 
 [node name="AI" type="Node2D" parent="." unique_id=712726917]
 position = Vector2(973, 315)
@@ -891,25 +1251,251 @@ show_percentage = false
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=483955527]
 
 [node name="PlayerBulletLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1840748357]
-offset_left = 71.0
-offset_right = 160.0
-offset_bottom = 73.0
+offset_left = 67.0
+offset_top = 528.0
+offset_right = 156.0
+offset_bottom = 601.0
 scale = Vector2(1.775834, 1.775834)
 theme_override_fonts/normal_font = ExtResource("18_ssvqc")
 theme_override_font_sizes/normal_font_size = 55
 text = "2/2"
 
 [node name="AIBulletLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1897253803]
-offset_left = 921.0
-offset_right = 1010.0
-offset_bottom = 73.0
+offset_left = 948.0
+offset_top = 527.0
+offset_right = 1037.0
+offset_bottom = 600.0
 scale = Vector2(1.775834, 1.775834)
 theme_override_fonts/normal_font = ExtResource("18_ssvqc")
 theme_override_font_sizes/normal_font_size = 55
 text = "2/2"
 
+[node name="Bullet" type="Sprite2D" parent="CanvasLayer" unique_id=659817902]
+position = Vector2(35.999985, 573)
+scale = Vector2(4.4375, 4.4375)
+texture = ExtResource("19_1kice")
+
+[node name="Bullet2" type="Sprite2D" parent="CanvasLayer" unique_id=710041763]
+position = Vector2(1089, 576)
+scale = Vector2(4.4375, 4.4375)
+texture = ExtResource("19_1kice")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1389514924]
+z_index = -3
+position = Vector2(566.75, 202.25003)
+scale = Vector2(7.3968754, 7.3968754)
+texture = ExtResource("20_5newe")
+
+[node name="YOULOOSE" type="Sprite2D" parent="." unique_id=2068393950]
+z_index = 192
+position = Vector2(576.5, -749.99994)
+scale = Vector2(7.20625, 7.20625)
+texture = ExtResource("23_e1j6l")
+
+[node name="Skully3" type="Sprite2D" parent="YOULOOSE" unique_id=729378960]
+position = Vector2(57.658005, 41.353)
+rotation = 0.26718956
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("24_pl11u")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="YOULOOSE/Skully3" unique_id=1451585488]
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"leftright"
+
+[node name="Skully2" type="Sprite2D" parent="YOULOOSE" unique_id=768994971]
+position = Vector2(-61.40503, 41.35298)
+rotation = -0.47911412
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("24_pl11u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YOULOOSE/Skully2" unique_id=808728776]
+root_node = NodePath("../../Skully3")
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"LEFLEF"
+
+[node name="youloose" type="RichTextLabel" parent="YOULOOSE" unique_id=1631101505]
+offset_left = -29.488293
+offset_top = 18.178658
+offset_right = 288.01385
+offset_bottom = 131.69122
+scale = Vector2(0.5188352, 0.5188352)
+theme_override_fonts/normal_font = ExtResource("18_ssvqc")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "  YOU
+LOOSE!"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="YOULOOSE" unique_id=120721127]
+offset_left = -71.39636
+offset_top = 58.699036
+offset_right = -31.396362
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("25_suyxu")
+texture_hover = ExtResource("26_sgl2t")
+stretch_mode = 5
+script = ExtResource("27_qouja")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2" type="TextureButton" parent="YOULOOSE" unique_id=607933003]
+offset_left = -55.715523
+offset_top = 58.699036
+offset_right = -15.715523
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("28_wljb1")
+texture_hover = ExtResource("29_v2yb1")
+stretch_mode = 5
+script = ExtResource("30_sgl2t")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YOULOOSE" unique_id=902010728]
+libraries/ = SubResource("AnimationLibrary_js0lu")
+
+[node name="DRAW" type="Sprite2D" parent="." unique_id=1340174617]
+position = Vector2(576.5, -760.0002)
+scale = Vector2(7.20625, 7.20625)
+texture = ExtResource("23_e1j6l")
+
+[node name="Skully3" type="Sprite2D" parent="DRAW" unique_id=1471463478]
+position = Vector2(57.658005, 41.353)
+rotation = 0.26718956
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("24_pl11u")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="DRAW/Skully3" unique_id=1537409300]
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"leftright"
+
+[node name="Skully2" type="Sprite2D" parent="DRAW" unique_id=2051035352]
+position = Vector2(-61.40503, 41.35298)
+rotation = -0.47911412
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("24_pl11u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DRAW/Skully2" unique_id=1496031450]
+root_node = NodePath("../../Skully3")
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"LEFLEF"
+
+[node name="youloose" type="RichTextLabel" parent="DRAW" unique_id=1791500771]
+offset_left = -35.1778
+offset_top = 41.353
+offset_right = 282.32434
+offset_bottom = 154.86557
+scale = Vector2(0.5760998, 0.5760998)
+theme_override_fonts/normal_font = ExtResource("18_ssvqc")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "DRAW!!"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="DRAW" unique_id=1337415211]
+offset_left = -71.39636
+offset_top = 58.699036
+offset_right = -31.396362
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("25_suyxu")
+texture_hover = ExtResource("26_sgl2t")
+stretch_mode = 5
+script = ExtResource("27_qouja")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2" type="TextureButton" parent="DRAW" unique_id=268344538]
+offset_left = -55.715523
+offset_top = 58.699036
+offset_right = -15.715523
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("28_wljb1")
+texture_hover = ExtResource("29_v2yb1")
+stretch_mode = 5
+script = ExtResource("30_sgl2t")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DRAW" unique_id=412072999]
+libraries/ = SubResource("AnimationLibrary_twgab")
+
+[node name="WIN" type="Sprite2D" parent="." unique_id=1713184523]
+position = Vector2(576.5, -753.0001)
+scale = Vector2(7.20625, 7.20625)
+texture = ExtResource("23_e1j6l")
+
+[node name="Skully3" type="Sprite2D" parent="WIN" unique_id=1155094318]
+position = Vector2(57.658005, 41.353)
+rotation = 0.26718956
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("31_qouja")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="WIN/Skully3" unique_id=1114872176]
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"leftright"
+
+[node name="Skully2" type="Sprite2D" parent="WIN" unique_id=612201312]
+position = Vector2(-61.40503, 41.35298)
+rotation = -0.47911412
+scale = Vector2(1.9774499, 1.9774499)
+texture = ExtResource("31_qouja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WIN/Skully2" unique_id=617414394]
+root_node = NodePath("../../Skully3")
+libraries/ = SubResource("AnimationLibrary_wljb1")
+autoplay = &"LEFLEF"
+
+[node name="youloose" type="RichTextLabel" parent="WIN" unique_id=840289901]
+offset_left = -25.741539
+offset_top = 22.619257
+offset_right = 291.7606
+offset_bottom = 136.13184
+scale = Vector2(0.45915434, 0.45915434)
+theme_override_fonts/normal_font = ExtResource("18_ssvqc")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "  YOU
+ WON!!"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="WIN" unique_id=1233036126]
+offset_left = -71.39636
+offset_top = 58.699036
+offset_right = -31.396362
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("25_suyxu")
+texture_hover = ExtResource("26_sgl2t")
+stretch_mode = 5
+script = ExtResource("27_qouja")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2" type="TextureButton" parent="WIN" unique_id=87637655]
+offset_left = -55.715523
+offset_top = 58.699036
+offset_right = -15.715523
+offset_bottom = 98.69903
+scale = Vector2(0.31122908, 0.31122908)
+texture_normal = ExtResource("28_wljb1")
+texture_hover = ExtResource("29_v2yb1")
+stretch_mode = 5
+script = ExtResource("30_sgl2t")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WIN" unique_id=2108330050]
+libraries/ = SubResource("AnimationLibrary_7025r")
+
 [connection signal="mouse_entered" from="AnimatedSprite2D/CanvasLayer/SHOOT" to="AnimatedSprite2D/CanvasLayer/SHOOT" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AnimatedSprite2D/CanvasLayer/SHOOT" to="AnimatedSprite2D/CanvasLayer/SHOOT" method="_on_mouse_exited"]
 [connection signal="pressed" from="AnimatedSprite2D/CanvasLayer/SHOOT" to="." method="_on_shoot_pressed"]
+[connection signal="mouse_entered" from="AnimatedSprite2D/CanvasLayer/SHEILD" to="AnimatedSprite2D/CanvasLayer/SHEILD" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AnimatedSprite2D/CanvasLayer/SHEILD" to="AnimatedSprite2D/CanvasLayer/SHEILD" method="_on_mouse_exited"]
 [connection signal="pressed" from="AnimatedSprite2D/CanvasLayer/SHEILD" to="." method="_on_sheild_pressed"]
+[connection signal="mouse_entered" from="AnimatedSprite2D/CanvasLayer/RELOAD" to="AnimatedSprite2D/CanvasLayer/RELOAD" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AnimatedSprite2D/CanvasLayer/RELOAD" to="AnimatedSprite2D/CanvasLayer/RELOAD" method="_on_mouse_exited"]
 [connection signal="pressed" from="AnimatedSprite2D/CanvasLayer/RELOAD" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="YOULOOSE/TextureButton" to="YOULOOSE/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="YOULOOSE/TextureButton2" to="YOULOOSE/TextureButton2" method="_on_pressed"]
+[connection signal="pressed" from="DRAW/TextureButton" to="DRAW/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="DRAW/TextureButton2" to="DRAW/TextureButton2" method="_on_pressed"]
+[connection signal="pressed" from="WIN/TextureButton" to="WIN/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="WIN/TextureButton2" to="WIN/TextureButton2" method="_on_pressed"]

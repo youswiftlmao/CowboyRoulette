@@ -1,5 +1,5 @@
 extends Node2D
-
+var game_over := false
 var on_cooldown = false
 
 var playershot = false
@@ -112,11 +112,13 @@ func ai_reload_action() -> void:
 func resolve_round():
 	# Player shoots AI
 	if playershot and not ai_shield:
+
 		AIhp -= 5
 		print("AI takes 5 damage! HP:", AIhp)
 
 	# AI shoots Player
 	if ai_shot and not playershield:
+
 		playerHP -= 5
 		print("Player takes 5 damage! HP:", playerHP)
 
@@ -134,29 +136,7 @@ func resolve_round():
 	ai_reload = false
 
 	# Check for game over
-	if playerHP <= 0:
-		print("PLAYER LOSES!")
-		await get_tree().create_timer(0.3).timeout
-		$AnimatedSprite2D.play("dead")
-		await get_tree().create_timer(2.0).timeout
-		$AnimatedSprite2D.queue_free()
-		$PlayerHPA.queue_free()
-	if AIhp <= 0:
-		print("AI LOSES!")
-		await get_tree().create_timer(0.3).timeout
-		$AI/AnimatedSprite2D.play("dead")
-		await get_tree().create_timer(2.0).timeout
-		$AI/AnimatedSprite2D.queue_free()
-		$AIAHP.queue_free()
-	if AIhp and playerHP <= 0:
-		print("DRAW")
-		await get_tree().create_timer(0.3).timeout
-		$AI/AnimatedSprite2D.play("dead")
-		$AnimatedSprite2D.play("dead")
-		await get_tree().create_timer(2.0).timeout
-		$AIAHP.queue_free()
-		$PlayerHPA.queue_free()
-		
+
 func start_cooldown():
 	on_cooldown = true
 	await get_tree().create_timer(3.0).timeout
@@ -164,3 +144,48 @@ func start_cooldown():
 func update_bullet_labels():
 	$CanvasLayer/PlayerBulletLabel.text = str(bulletsplayer) + "/2"
 	$CanvasLayer/AIBulletLabel.text = str(ai_bullets) + "/2"
+func _process(delta: float) -> void:
+	if game_over:
+		return
+
+	if AIhp <= 0 and playerHP <= 0:
+		game_over = true
+		print("DRAW")
+
+		$AI/AnimatedSprite2D.play("dead")
+		$AnimatedSprite2D.play("dead")
+
+		await get_tree().create_timer(2.0).timeout
+
+		$AI/AnimatedSprite2D.queue_free()
+		$AnimatedSprite2D.queue_free()
+		$AIAHP.queue_free()
+		$PlayerHPA.queue_free()
+		$DRAW/AnimationPlayer.play("AAAAAA")
+		set_process(false)
+
+	elif playerHP <= 0:
+		game_over = true
+		print("PLAYER LOSES!")
+
+		$AnimatedSprite2D.play("dead")
+
+		await get_tree().create_timer(2.0).timeout
+
+		$AnimatedSprite2D.queue_free()
+		$PlayerHPA.queue_free()
+		$YOULOOSE/AnimationPlayer.play("LOOSE")
+		set_process(false)
+
+	elif AIhp <= 0:
+		game_over = true
+		print("AI LOSES!")
+
+		$AI/AnimatedSprite2D.play("dead")
+
+		await get_tree().create_timer(2.0).timeout
+
+		$AI/AnimatedSprite2D.queue_free()
+		$AIAHP.queue_free()
+		$WIN/AnimationPlayer.play("WIIINN")
+		set_process(false)
